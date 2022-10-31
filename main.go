@@ -3,7 +3,25 @@ package main
 import (
 	"fmt"
 	"proxynet/functions"
+    "os"
+    "os/exec"
+    "runtime"
 )
+
+func clear(ostype string) {
+    switch ostype {
+        case "linux": {
+            cmd := exec.Command("clear") //Linux example, its tested
+            cmd.Stdout = os.Stdout
+            cmd.Run()
+        }
+        case "windows": {
+            cmd := exec.Command("cmd", "/c", "cls") //Windows example, its tested 
+            cmd.Stdout = os.Stdout
+            cmd.Run()
+        }
+    }
+}
 
 func main() {
 	var action int                                                                                                                                                                                                   // Declare a variable to store the user's choice
@@ -11,6 +29,7 @@ func main() {
 	// switch statement to choose the action forever until the user enters 0
     for { 
     	fmt.Scanln(&action)
+        clear(runtime.GOOS)
 	    switch action {
         case 1:
             functions.CheckBalance() // Check the account balance
