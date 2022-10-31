@@ -10,12 +10,14 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func CheckID() {
-	err := godotenv.Load()
+func init() {
+   	err := godotenv.Load()
 	if err != nil {
 		panic("Failed to load ENV")
-	} // Load the ENV file 
+	}
+}
 
+func CheckID() {
 	api_token := os.Getenv("API_TOKEN") // Get the API token from the ENV file
 
 	resp, err := http.Get("https://proxy6.net/api/" + api_token) // Send a request to the API 

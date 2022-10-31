@@ -11,12 +11,14 @@ import (
 	"strings"
 )
 
-func CheckCountCountry() {
-	err := godotenv.Load()
+func init() {
+   	err := godotenv.Load()
 	if err != nil {
 		panic("Failed to load ENV")
-	} // Load the ENV file
+	}
+}
 
+func CheckCountCountry() {
 	var country string
 	fmt.Println("Enter the country code (e.g. US, RU, DE, etc.)") // Ask the user to enter the country code
 
