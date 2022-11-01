@@ -12,7 +12,7 @@
 *.out
 
 # Configs
-. env
+.env
 *.env
 
 # Dependency directories (remove the comment below to include it)
